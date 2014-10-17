@@ -137,7 +137,7 @@ namespace GildedRose.Tests
         }
     }
 
-    public static class TestHelper
+	public static class TestHelper
     {
         public static Item UpdateQuality(this Item item)
         {

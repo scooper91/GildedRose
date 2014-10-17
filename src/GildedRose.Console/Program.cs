@@ -38,21 +38,26 @@ namespace GildedRose.Console
         {
             for (var i = 0; i < Items.Count; i++)
             {
+	            var changeInQuality = 0;
                 if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
                     if (Items[i].Quality > 0)
                     {
                         if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                         {
-                            Items[i].Quality = Items[i].Quality - 1;
+                            changeInQuality--;
                         }
+						if (Items[i].Name == "Conjured Mana Cake")
+						{
+							changeInQuality--;
+						}
                     }
                 }
                 else
                 {
                     if (Items[i].Quality < 50)
                     {
-                        Items[i].Quality = Items[i].Quality + 1;
+                        changeInQuality++;
 
                         if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
                         {
@@ -60,7 +65,7 @@ namespace GildedRose.Console
                             {
                                 if (Items[i].Quality < 50)
                                 {
-                                    Items[i].Quality = Items[i].Quality + 1;
+                                    changeInQuality++;
                                 }
                             }
 
@@ -68,7 +73,7 @@ namespace GildedRose.Console
                             {
                                 if (Items[i].Quality < 50)
                                 {
-                                    Items[i].Quality = Items[i].Quality + 1;
+                                    changeInQuality++;
                                 }
                             }
                         }
@@ -90,26 +95,28 @@ namespace GildedRose.Console
                             {
                                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                                 {
-                                    Items[i].Quality = Items[i].Quality - 1;
+                                    changeInQuality--;
                                 }
                             }
                         }
                         else
                         {
-                            Items[i].Quality = Items[i].Quality - Items[i].Quality;
+	                        changeInQuality = 0;
+                            Items[i].Quality = 0;
                         }
                     }
                     else
                     {
                         if (Items[i].Quality < 50)
                         {
-                            Items[i].Quality = Items[i].Quality + 1;
+                            changeInQuality++;
                         }
                     }
                 }
+	            Items[i].Quality += changeInQuality;
             }
         }
-
+		
     }
 
     public class Item
