@@ -30,9 +30,7 @@ namespace GildedRose.Console
 			};
 
 			app.UpdateQuality();
-
 			System.Console.ReadKey();
-
 		}
 
 		public void UpdateQuality()
@@ -40,11 +38,12 @@ namespace GildedRose.Console
 			foreach (var item in Items)
 			{
 				var changeInQuality = 0;
+
 				if (IsNotAgedBrie(item) && !IsBackstagePass(item))
 				{
 					if (item.Quality > 0)
 					{
-						changeInQuality = DecreaseInQuality(item, changeInQuality);
+						changeInQuality -= CalculateDecrease(item);
 					}
 				}
 				else if (IsNotLegendary(item))
@@ -81,7 +80,7 @@ namespace GildedRose.Console
 						{
 							if (item.Quality > 0)
 							{
-								changeInQuality = DecreaseInQuality(item, changeInQuality);
+								changeInQuality -= CalculateDecrease(item);
 							}
 						}
 						else
@@ -90,29 +89,22 @@ namespace GildedRose.Console
 							item.Quality = 0;
 						}
 					}
-					else
+					else if (item.Quality < 50)
 					{
-						if (item.Quality < 50)
-						{
-							changeInQuality++;
-						}
+						changeInQuality++;
 					}
 				}
 				item.Quality += changeInQuality;
 			}
 		}
 
-		private static int DecreaseInQuality(Item item, int changeInQuality)
+		private static int CalculateDecrease(Item item)
 		{
 			if (IsConjured(item))
 			{
-				changeInQuality -= 2;
+				return 2;
 			}
-			else if (IsNotLegendary(item))
-			{
-				changeInQuality--;
-			}
-			return changeInQuality;
+			return IsNotLegendary(item) ? 1 : 0;
 		}
 
 		private static bool IsNotAgedBrie(Item item)
