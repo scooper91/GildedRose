@@ -30,23 +30,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="EventItemTests.cs" />
+    <Compile Include="LegendaryItemTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdateItemsTests.cs" />
-    <Compile Include="WithAConjuredItemTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="QualityAgedItemTests.cs" />
+    <Compile Include="StandardItemTests.cs" />
+    <Compile Include="TestsSetUp.cs" />
+    <Compile Include="ConjuredItemTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GildedRose.Console\GildedRose.Console.csproj">
       <Project>{0e4f0e44-f033-49dc-a052-b4fb6f2f4e9b}</Project>
       <Name>GildedRose.Console</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
