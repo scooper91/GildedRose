@@ -19,5 +19,19 @@ namespace GildedRose.Tests
 			var item = new Item { Name = "Sulfuras, Hand of Ragnaros", Quality = 1, SellIn = 1 }.UpdateQuality();
 			Assert.That(item.SellIn, Is.EqualTo(1));
 		}
+
+	    [Test]
+	    public void Should_not_decrease_quality_for_other_legendary_items()
+	    {
+	        var item = new Item {Name = "Sulfuras feet of Bob", Quality = 1, SellIn = 1}.UpdateQuality();
+            Assert.That(item.Quality, Is.EqualTo(1));
+	    }
+
+	    [Test]
+	    public void Should_not_decrease_sell_in_for_other_legendary_items()
+	    {
+	        var item = new Item {Name = "Sulfuras feet of Bob", Quality = 1, SellIn = 1}.UpdateQuality();
+            Assert.That(item.SellIn, Is.EqualTo(1));
+	    }
 	}
 }

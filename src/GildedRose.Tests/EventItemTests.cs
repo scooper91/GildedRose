@@ -48,5 +48,13 @@ namespace GildedRose.Tests
 			var item = new Item { Name = "Backstage passes to a TAFKAL80ETC concert", Quality = 1, SellIn = 1 }.UpdateQuality();
 			Assert.That(item.SellIn, Is.EqualTo(0));
 		}
+
+	    [Test]
+	    public void Should_accept_backstage_passes_the_same()
+	    {
+	        var item = new Item {Name = "Backstage passes to Justin Bieber", Quality = 3, SellIn = 3}.UpdateQuality();
+            Assert.That(item.SellIn, Is.EqualTo(2));
+            Assert.That(item.Quality, Is.EqualTo(6));
+	    }
 	}
 }

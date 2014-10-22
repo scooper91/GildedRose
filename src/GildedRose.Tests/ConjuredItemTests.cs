@@ -27,5 +27,12 @@ namespace GildedRose.Tests
 			Assert.That(item.Quality, Is.EqualTo(0));
 		}
 
+	    [Test]
+	    public void Should_allow_other_conjured_items()
+	    {
+	        var item = new Item {Name = "Conjured pasta", Quality = 4, SellIn = 4}.UpdateQuality();
+            Assert.That(item.Quality, Is.EqualTo(2));
+	    }
+
 	}
 }

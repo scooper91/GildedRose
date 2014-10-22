@@ -114,17 +114,17 @@ namespace GildedRose.Console
 
 		private static bool IsBackstagePass(Item item)
 		{
-			return item.Name == "Backstage passes to a TAFKAL80ETC concert";
+			return item.Name.Contains("Backstage passes");
 		}
 
 		private static bool IsNotLegendary(Item item)
 		{
-			return item.Name != "Sulfuras, Hand of Ragnaros";
+			return !item.Name.Contains("Sulfuras");
 		}
 
 		private static bool IsConjured(Item item)
 		{
-			return item.Name == "Conjured Mana Cake";
+			return item.Name.Contains("Conjured");
 		}
 	}
 
