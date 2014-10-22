@@ -127,14 +127,4 @@ namespace GildedRose.Console
 			return item.Name.Contains("Conjured");
 		}
 	}
-
-	public class Item
-	{
-		public string Name { get; set; }
-
-		public int SellIn { get; set; }
-
-		public int Quality { get; set; }
-	}
-
 }
